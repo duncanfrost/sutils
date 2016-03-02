@@ -9,7 +9,7 @@
 #include <alsa/asoundlib.h>
 #include <alsa/control.h>
 
-#define INTERVAL       3
+#define INTERVAL       3000000
 #define FORMAT         "%s %i"
 #define DEVICE         "hw:0"
 #define VOLUME_CONTROL "Master Playback Volume"
@@ -150,7 +150,7 @@ int main(int argc, char *argv[])
                 volume_ctl, mute_ctl, format)) == EXIT_FAILURE)
                 break;
 
-            sleep(interval);
+            usleep(interval);
         }
     else
         exit_code = put_infos(vol_min, vol_max, volume_elem, mute_elem,
